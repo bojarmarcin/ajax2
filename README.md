@@ -1,1 +1,1 @@
-# ajax2
+https://bojarmarcin.github.io/ajax2/
