@@ -9,7 +9,7 @@ $(document).ready(function() {
       type: "GET",
       dataType: 'json',
       success: function(data) {
-        $('.tweet').attr("href","https://twitter.com/intent/tweet?ref_src=twsrc%5Etfw&text="+ '"' + data.quote + '"' + " - " + data.author + "&tw_p=tweetbutton&url=http%3A%2F%2Fcodepen.io%2Fgexo%2Fpen%2FvOPxdg" );
+        $('.tweet').attr("href","https://twitter.com/intent/tweet?ref_src=twsrc%5Etfw&text="+ '"' + data.quote + '"' + " - " + data.author);
         $('.quote').text('"' + data.quote + '"');
         $('.author').text('--' + data.author);
         $('.box').addClass('animated fadeInLeft').show();
