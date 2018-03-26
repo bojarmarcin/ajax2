@@ -9,25 +9,21 @@
     <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
-    <div class="full-width">
-      <div class="container row">
-        <div class="quote">
-          <h1> Random Quote Generator</h1>
-           <p class="lead"> Here you can read and share quotes.</p>
-            <div class="real-quote">
-              <span><p>Universe is full of love and wonders, you just need to admire them.</p></span>
-            </div>
-            <div class="author">
-              <span>Author: Vaghawan Ojha</span>
-              <small>Category: Universe</small>
-            </div>
-            <div class="share">
-              <button class="btn-primary" id ="btn">Next Quote</button>
-              <button class="btn-default"><a id="twitter" href="https://twitter.com/intent/tweet?ref_src=twsrc%5Etfw&text=Check%20out%20this%20site&tw_p=tweetbutton&url=http%3A%2F%2Fcodepen.io%2Fgexo%2Fpen%2FvOPxdg" target="ext"><i class="fa fa-twitter"></i> Tweet</a></button>
-            </div>
+    <div class="container-fluid">
+      <div class="jumbotron" id="quote">
+        <h1>Random Quote Machine</h1>
+        <div class="box">
+          <p class="quote"></p>
+          <i><p class="author"></p></i>
         </div>
+        <div>
+          <button class="btn btn-primary btn-lg" id="generator">New Quote</button>
+          <a href="#" target="_blank" class="tweet"><i class="fa fa-lg fa-twitter"></i> Tweet</a>
+        </div>
+        <p></p>
       </div>
     </div>
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
     <script type="text/javascript" src="js/scripts.js"></script>
   </body>
 </html>
