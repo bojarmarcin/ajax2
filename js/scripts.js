@@ -1,9 +1,6 @@
 $(document).ready(function() {
   $('.box').hide();
-  $('#generator').click(function() {
-    $('.box').hide();
-    $('.quote').text("");
-    $('.author').text("");
+  function getQuote() {
     $.ajax({
       url: 'https://andruxnet-random-famous-quotes.p.mashape.com/',
       type: "GET",
@@ -23,5 +20,8 @@ $(document).ready(function() {
         xhr.setRequestHeader("X-Mashape-Authorization", "k0yyUeZkPpmshDLnY9BD8bFhgm5mp15QiNXjsncA14OFYnCyOH")
       }
     })
+  }
+  $('#generator').click(function() {
+    getQuote();
   })
 });
