@@ -1,39 +1,33 @@
-var tweetLink = "https://twitter.com/intent/tweet?text=";
-var quoteUrl = "https://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1";
-var prefix = "https://cors-anywhere.herokuapp.com/";
-
-
-function getQuote() {
-    $.getJSON(quoteUrl, createTweet);
-    $.getJSON(prefix + quoteUrl, createTweet);
-    $.ajaxSetup({ cache: false });
-}
-
-function createTweet(input) {
-    var data = input[0];
-
-    var quoteText = $(data.content).text().trim();
-    var quoteAuthor = data.title;
-
-    if (!quoteAuthor.length) {
-        quoteAuthor = "Unknown author";
-    }
-
-    var tweetText = "Quote of the day - " + quoteText + " Author: " + quoteAuthor;
-
-    if (tweetText.length > 140) {
-        getQuote();
-    } else {
-        var tweet = tweetLink + encodeURIComponent(tweetText);
-        $('.quote').text(quoteText);
-        $('.author').text("Author: " + quoteAuthor);
-        $('.tweet').attr('href', tweet);
-    }
-}
-
 $(document).ready(function() {
-    getQuote();
-    $('.trigger').click(function() {
-        getQuote();
+  $('.box').hide();
+  $('#generator').click(function() {
+    $('.box').hide();
+    $('.quote').text("");
+    $('.author').text("");
+    $.ajax({
+      url: 'https://andruxnet-random-famous-quotes.p.mashape.com/',
+      type: "GET",
+      dataType: 'json',
+      success: function(data) {
+        $('.quote').text('"' + data.quote + '"');
+        $('.author').text('--' + data.author);
+        $('.box').addClass('animated fadeInLeft').show();
+      },
+      beforeSend: function(xhr) {
+        xhr.setRequestHeader("X-Mashape-Authorization", "k0yyUeZkPpmshDLnY9BD8bFhgm5mp15QiNXjsncA14OFYnCyOH")
+      }
     })
+  })
+  $('#tweet').click(function() {
+    $.ajax({
+      url: 'https://andruxnet-random-famous-quotes.p.mashape.com/',
+      type: "GET",
+      dataType: 'json',
+      success: function(data) {
+        var tweetText = encodeURIComponent(data.quote + ' ' + data.author),
+            tweetUrl = 'https://twitter.com/intent/tweet?text=' + tweetText;
+        $('#tweet').attr('href', tweetUrl);
+      },
+    })
+  })
 });
