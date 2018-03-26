@@ -13,7 +13,7 @@ $(document).ready(function() {
           $('.author').text('--' + data.author);
           $('.box').addClass('animated fadeInLeft').show();
         } else {
-          data();
+          getQuote();
         }
       },
       beforeSend: function(xhr) {
