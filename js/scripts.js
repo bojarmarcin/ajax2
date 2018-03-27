@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  getQuote(1);
+  getQuote();
   $('.box').hide();
   function getQuote() {
     $.ajax({
